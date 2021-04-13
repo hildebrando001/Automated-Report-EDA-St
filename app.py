@@ -3,6 +3,9 @@ import pandas as pd
 import codecs # Helps to load file
 import streamlit.components.v1 as components # version 1
 
+from pandas_profiling import ProfileReport
+from streamlit_pandas_profiling import st_profile_report
+
 def main():
     """Exploratory Data Analysis(EDA) Application with Streamlit Component
     """
@@ -10,12 +13,15 @@ def main():
     choice = st.sidebar.selectbox("Menu", menu)
 
     if choice == "Pandas Profile":
-        st.subheader("Automated EDA with Pandas")
+        st.subheader("Simple Automated Exploratory Data Analysis")
 
         data_file = st.file_uploader("Upload CSV", type=['csv'])
         if data_file is not None:
             df = pd.read_csv(data_file)
             st.dataframe(df.head())
+
+            profile = ProfileReport(df)
+            st_profile_report(profile)
 
     elif choice == "Sweetviz":
         st.subheader("Automated EDA with Sweetviz")
