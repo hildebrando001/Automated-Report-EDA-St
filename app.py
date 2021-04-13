@@ -6,6 +6,14 @@ import streamlit.components.v1 as components # version 1
 from pandas_profiling import ProfileReport
 from streamlit_pandas_profiling import st_profile_report
 
+import sweetviz as sv
+
+# function that makes able to render a html file
+def st_display_sweetviz(report_html, width=1000, height=500):
+    report_file = codecs.open(report_html, 'r')
+    page = report_file.read()
+    components.html(page, width=width, height=height, sceolling=True)
+
 def main():
     """Exploratory Data Analysis(EDA) Application with Streamlit Component
     """
@@ -14,7 +22,6 @@ def main():
 
     if choice == "Pandas Profile":
         st.subheader("Simple Automated Exploratory Data Analysis")
-
         data_file = st.file_uploader("Upload CSV", type=['csv'])
         if data_file is not None:
             df = pd.read_csv(data_file)
@@ -25,6 +32,14 @@ def main():
 
     elif choice == "Sweetviz":
         st.subheader("Automated EDA with Sweetviz")
+        data_file = st.file_uploader("Upload CSV", type=['csv'])
+        if data_file is not None:
+            df = pd.read_csv(data_file)
+            st.dataframe(df.head())
+
+            # Normal Workflow
+            report = sv.analyze(df)
+            report.show_html()
 
     elif choice == "About":
         st.subheader("About")
