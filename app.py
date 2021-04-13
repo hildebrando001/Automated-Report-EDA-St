@@ -20,7 +20,14 @@ def main():
 
     else:
         st.subheader("Home")
-        components.html("<p style='color:red;'> Streamlit components is awosome. </p>")
+        html_temp = """
+        <div style="background-color:royalblue;padding:10px;border-radius:10px">
+        <h1 style="color:white;text-align:center;">Simple EDA with Streamlit Components
+        </div>
+        """
+
+        components.html(html_temp)
+
 
 
 # It makes possible to know if a script is coming from an importation or 
