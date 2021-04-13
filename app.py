@@ -12,6 +12,11 @@ def main():
     if choice == "Pandas Profile":
         st.subheader("Automated EDA with Pandas")
 
+        data_file = st.file_uploader("Upload CSV", type=['csv'])
+        if data_file is not None:
+            df = pd.read_csv(data_file)
+            st.dataframe(df.head())
+
     elif choice == "Sweetviz":
         st.subheader("Automated EDA with Sweetviz")
 
