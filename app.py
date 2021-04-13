@@ -12,7 +12,7 @@ import sweetviz as sv
 def st_display_sweetviz(report_html, width=1000, height=500):
     report_file = codecs.open(report_html, 'r')
     page = report_file.read()
-    components.html(page, width=width, height=height, sceolling=True)
+    components.html(page, width=width, height=height, scrolling=True)
 
 def main():
     """Exploratory Data Analysis(EDA) Application with Streamlit Component
@@ -36,11 +36,13 @@ def main():
         if data_file is not None:
             df = pd.read_csv(data_file)
             st.dataframe(df.head())
+            if st.button("Generate Sweetviz Report"):
+                # Normal Workflow
+                report = sv.analyze(df)
+                report.show_html('analyze.html', open_browser=False) # "custom name.html" in case you'd like to custom the report file name
+                st_display_sweetviz("analyze.html")
 
-            # Normal Workflow
-            report = sv.analyze(df)
-            report.show_html()
-
+            
     elif choice == "About":
         st.subheader("About")
 
