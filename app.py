@@ -45,15 +45,28 @@ def main():
             
     elif choice == "About":
         st.subheader("About")
+        # components.iframe('https://google.com') # with iframe, it is possible to insert in a live frame
+        html_temp = """
+        <div style="background-color:#F0F2F6;padding:10px;border-radius:10px">
+        <h2 style="color:darkgray;text-align:center;">
+        Affectionate by technology. Involved in data science,
+        analysis and business intelligence.</h2>
+        </div>
+        """
+        components.html(html_temp)
+
+
 
     else:
         st.subheader("Home")
+
         html_temp = """
-        <div style="background-color:royalblue;padding:10px;border-radius:10px">
-        <h1 style="color:white;text-align:center;">Simple EDA with Streamlit Components
+        <div style="background-color:#F0F2F6;padding:10px;border-radius:10px">
+            <h2 style="color:darkgray;text-align:center;">
+                Simple Automated Exploratory Data Analysis (EDA)
+            </h2>
         </div>
         """
-
         components.html(html_temp)
 
 
