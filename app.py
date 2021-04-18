@@ -21,7 +21,7 @@ def main():
     choice = st.sidebar.selectbox("Menu", menu)
 
     if choice == "Pandas Profile":
-        st.subheader("Simple Automated Exploratory Data Analysis")
+        st.subheader("**Pandas Profile** - Automated EDA with Pandas Profile")
         data_file = st.file_uploader("Upload CSV", type=['csv'])
         if data_file is not None:
             df = pd.read_csv(data_file)
@@ -31,7 +31,7 @@ def main():
             st_profile_report(profile)
 
     elif choice == "Sweetviz":
-        st.subheader("Automated EDA with Sweetviz")
+        st.subheader("**Sweetviz** - Automated EDA with Sweetviz")
         data_file = st.file_uploader("Upload CSV", type=['csv'])
         if data_file is not None:
             df = pd.read_csv(data_file)
@@ -44,13 +44,13 @@ def main():
 
             
     elif choice == "About":
-        st.subheader("About")
+        st.subheader("**About**")
         # components.iframe('https://google.com') # with iframe, it is possible to insert in a live frame
         html_temp = """
-        <div style="background-color:#F0F2F6;padding:10px;border-radius:10px">
-        <h2 style="color:darkgray;text-align:center;">
-        Affectionate by technology. Involved in data science,
-        analysis and business intelligence.</h2>
+        <div style="background-color:#B1CDFF;padding:10px;border-radius:10px">
+            <h3 style="color:#013187;text-align:center;font-family: Arial, Helvetica, sans-serif;">
+                This Data App provides you two reports based on Pandas Profiling and Sweetviz libraries.
+            </h3>
         </div>
         """
         components.html(html_temp)
@@ -58,18 +58,18 @@ def main():
 
 
     else:
-        st.subheader("Home")
+        st.subheader("**Home**")
 
         html_temp = """
-        <div style="background-color:#F0F2F6;padding:10px;border-radius:10px">
-            <h2 style="color:darkgray;text-align:center;">
+        <div style="background-color:#B1CDFF;padding:10px;border-radius:10px">
+            <h3 style="color:#013187;text-align:center; font-family: Arial, Helvetica, sans-serif;">
                 Simple Automated Exploratory Data Analysis (EDA)
-            </h2>
+            </h3>
         </div>
         """
         components.html(html_temp)
 
-
+        
 
 # It makes possible to know if a script is coming from an importation or 
 # if it's coming from of the principal application
